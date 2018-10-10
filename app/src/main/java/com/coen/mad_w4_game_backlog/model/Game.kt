@@ -13,7 +13,7 @@ data class Game(
         val platform: String,
         val note: String,
         val status: String,
-        val date: Date
+        val date: String
 ): Serializable {
 
     @PrimaryKey(autoGenerate = true)
