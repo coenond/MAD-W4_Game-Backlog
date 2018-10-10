@@ -54,15 +54,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddGameActivity::class.java)
             startActivity(intent)
         }
-
-//        val swipeCallback = GameAdapterSwipeCallback(cl_fab, gamesAdapter, gameRepository, this)
-//        ItemTouchHelper(swipeCallback).attachToRecyclerView(rv_games)
     }
 
     private fun onGameClick(game: Game) {
-//        val intent = Intent(this, onGameClick::class.java)
-//        intent.putExtra(GAME_EXTRA, game)
-//        startActivity(intent)
+        val intent = Intent(this, EditGameActivity::class.java)
+        intent.putExtra("game", game)
+        startActivity(intent)
     }
 
 }

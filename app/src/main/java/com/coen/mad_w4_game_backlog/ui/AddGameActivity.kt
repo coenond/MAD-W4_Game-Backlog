@@ -1,9 +1,7 @@
 package com.coen.mad_w4_game_backlog.ui
 
 import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
-import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
 import android.widget.ArrayAdapter
 import com.coen.mad_w4_game_backlog.R

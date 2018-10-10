@@ -9,11 +9,11 @@ import android.support.annotation.NonNull
 
 @Entity(tableName = "games")
 data class Game(
-        val title: String,
-        val platform: String,
-        val note: String,
-        val status: String,
-        val date: String
+        var title: String,
+        var platform: String,
+        var note: String,
+        var status: String,
+        var date: String
 ): Serializable {
 
     @PrimaryKey(autoGenerate = true)
