@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="18dp"
     android:layout_marginTop="12dp">
-    <!-- A CardView that contains a TextView -->
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,23 +13,23 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif"
-            android:text="The Witcher 3"
+            android:text="Game Title"
             android:textColor="@color/colorBackgroundDark"
             android:textSize="18sp"
             android:textStyle="italic"
+            android:fontFamily="sans-serif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toTopOf="@id/tv_platform"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_platform"
+            android:text="platform"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="PC"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_status"
             app:layout_constraintHorizontal_bias="0.5"
@@ -37,9 +37,9 @@
 
         <TextView
             android:id="@+id/tv_status"
+            android:text="status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Ordered"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_date"
             app:layout_constraintHorizontal_bias="0.5"
@@ -47,12 +47,11 @@
 
         <TextView
             android:id="@+id/tv_date"
+            android:text="31-01-2018"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="31/10/2017"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/tv_status" />
 
     </android.support.constraint.ConstraintLayout>

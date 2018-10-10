@@ -5,10 +5,14 @@ import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.widget.LinearLayout
 import com.coen.mad_w4_game_backlog.R
 import com.coen.mad_w4_game_backlog.db.GameRepository
+import com.coen.mad_w4_game_backlog.helper.SwipeToDelete
 import com.coen.mad_w4_game_backlog.model.Game
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,13 +34,21 @@ class MainActivity : AppCompatActivity() {
         })
 
         // Init RecyclerView
-        rv_game_list.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayout.VERTICAL, false).apply {
-                reverseLayout = true
-                stackFromEnd = true
+        rv_game_list.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        rv_game_list.adapter = gameAdapter
+
+        // Set Swipe to delete
+        val onSwipe = object : SwipeToDelete(this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val adapter = rv_game_list.adapter as GameAdapter
+                val game = adapter.getItem(viewHolder.adapterPosition)!!
+                repo.delete(game)
+                Snackbar.make(rv_game_list, "Game ${game.title} deleted.", Snackbar.LENGTH_LONG)
+                        .setAction("Undo") { _ -> repo.insert(game) }.show()
             }
-            adapter = gameAdapter
         }
+        val itemTouchHelper = ItemTouchHelper(onSwipe)
+        itemTouchHelper.attachToRecyclerView(rv_game_list)
 
         fab.setOnClickListener {
             val intent = Intent(this, AddGameActivity::class.java)
@@ -52,4 +64,5 @@ class MainActivity : AppCompatActivity() {
 //        intent.putExtra(GAME_EXTRA, game)
 //        startActivity(intent)
     }
+
 }

@@ -21,6 +21,11 @@ class GameRepository(context: Context) {
         doAsync { gameDao.insert(g) }
     }
 
+
+    fun delete(g: Game) {
+        doAsync { gameDao.delete(g) }
+    }
+
     fun update(g: Game) {
         doAsync { gameDao.update(g) }
     }
